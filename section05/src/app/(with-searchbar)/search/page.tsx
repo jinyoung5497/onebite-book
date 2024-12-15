@@ -1,5 +1,6 @@
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 async function SearchResult({
@@ -26,6 +27,26 @@ async function SearchResult({
       ))}
     </div>
   );
+}
+
+type Props = {
+  searchParams: Promise<{ q: string }>;
+};
+
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
+  const { q } = await searchParams;
+
+  return {
+    title: `${q} : 한입북스 검색`,
+    description: `${q} 검색 결과입니다`,
+    openGraph: {
+      title: `${q} : 한입북스 검색`,
+      description: `${q} 검색 결과입니다`,
+      images: ["/thumbnail.png"],
+    },
+  };
 }
 
 export default function Page({

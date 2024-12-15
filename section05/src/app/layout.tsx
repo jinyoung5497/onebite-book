@@ -3,9 +3,11 @@ import Link from "next/link";
 import style from "./layout.module.css";
 
 export default function RootLayout({
+  modal,
   children,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -17,6 +19,8 @@ export default function RootLayout({
           <main>{children}</main>
           <footer>제작 @winterlood</footer>
         </div>
+        {modal}
+        <div id="modal-root"></div>
       </body>
     </html>
   );
