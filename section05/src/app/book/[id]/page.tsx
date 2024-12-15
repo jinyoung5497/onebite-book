@@ -70,10 +70,11 @@ async function ReviewList({ id }: { id: string }) {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata | null> {
+  const { id } = await params;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`,
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`,
     { cache: "force-cache" }
   );
   if (!response.ok) {
