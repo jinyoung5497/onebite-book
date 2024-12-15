@@ -34,8 +34,7 @@ async function BookDetail({ id: paramId }: { id: string }) {
 
   const book: BookData = await response.json();
 
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    book;
+  const { title, subTitle, description, author, publisher, coverImgUrl } = book;
 
   return (
     <section>
