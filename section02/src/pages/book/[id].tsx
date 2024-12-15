@@ -57,7 +57,7 @@ export default function Page({
   }
 
   if (!oneBook) throw new Error();
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+  const { title, subTitle, description, author, publisher, coverImgUrl } =
     oneBook;
 
   return (
