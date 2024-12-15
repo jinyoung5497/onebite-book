@@ -6,19 +6,8 @@ import ReviewEditor from "@/components/review-editor";
 import Image from "next/image";
 import { Metadata } from "next";
 
-export async function generateStaticParams() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`
-  );
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  const books: BookData[] = await response.json();
-
-  return books.map((book) => ({
-    id: book.id.toString(),
-  }));
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
 async function BookDetail({ id: paramId }: { id: string }) {
